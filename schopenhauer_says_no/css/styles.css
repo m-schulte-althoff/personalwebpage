@@ -1,0 +1,107 @@
+/* filepath: /home/matt/Git/personalwebpage/schopenhauer_says_no/css/styles.css */
+/* Base Styles */
+
+:root {
+    --text-color: #333;
+    --bg-color: #fff;
+    --footer-bg-color: #f4f4f4;
+    --footer-border-color: #ccc;
+    /* Add more if needed, like for dark mode */
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1263px;
+    margin: 0 auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--text-color);
+    padding: 1em 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Dropcap style */
+.dropcap {
+    font-family: 'Old Standard TT', serif; /* Placeholder for decorative font */
+    font-size: 3rem;
+    float: left;
+    margin-right: 0.1em;
+    line-height: 1;
+}
+
+/* Popin style */
+.popin {
+    font-style: italic;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 0.2em;
+    border: 1px solid var(--text-color);
+    border-radius: 0.2em;
+}
+
+.sidebar {
+    background-color: #f4f4f4;
+    padding: 1em;
+    border-left: 1px solid var(--text-color);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5em;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+    border-top: 1px solid var(--footer-border-color);
+    padding: 1em 0;
+    text-align: center;
+}
+
+footer img {
+    max-width: 100px;
+    margin-bottom: 1em;
+}
+
+footer p {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-color);
+}
