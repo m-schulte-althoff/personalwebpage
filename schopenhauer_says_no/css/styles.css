@@ -5,7 +5,21 @@
     --bg-color: #fff;
     --footer-bg-color: #f4f4f4;
     --footer-border-color: #ccc;
-    /* Add more if needed, like for dark mode */
+    --switch-bg-color: #333;
+    --switch-text-color: #fff;
+    --link-color: #1e90ff; /* Default link color */
+    --link-visited-color: #551a8b; /* Default visited link color */
+}
+
+body.dark-mode {
+    --text-color: #d7d7d7;
+    --bg-color: #313131;
+    --footer-bg-color: #434343;
+    --footer-border-color: #525252;
+    --switch-bg-color: #d7d7d7;
+    --switch-text-color: #333;
+    --link-color: #87cefa; /* Brighter link color for dark mode */
+    --link-visited-color: #dda0dd; /* Brighter visited link color for dark mode */
 }
 
 /* Font-face declarations */
@@ -36,6 +50,15 @@ body {
     background-color: var(--bg-color);
 }
 
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--link-visited-color);
+}
+
 .container {
     max-width: 1263px;
     margin: 0 auto;
@@ -62,8 +85,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
+    color: var(--link-color);
 }
 
 /* Dropcap style */
@@ -85,30 +107,6 @@ header nav ul li a {
     border-radius: 0.2em;
 }
 
-.sidebar {
-    background-color: #f4f4f4;
-    padding: 1em;
-    border-left: 1px solid var(--text-color);
-}
-
-.sidebar h3 {
-    margin-top: 0;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 0.5em;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
 footer {
     background-color: var(--footer-bg-color);
     border-top: 1px solid var(--footer-border-color);
@@ -125,4 +123,16 @@ footer p {
     margin: 0;
     font-family: "Helvetica Neue", Arial, sans-serif;
     color: var(--text-color);
+}
+
+.switch {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: var(--switch-bg-color);
+    color: var(--switch-text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
