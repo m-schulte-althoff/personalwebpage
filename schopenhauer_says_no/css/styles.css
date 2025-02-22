@@ -1,4 +1,3 @@
-/* filepath: /home/matt/Git/personalwebpage/schopenhauer_says_no/css/styles.css */
 /* Base Styles */
 
 :root {
@@ -7,6 +6,28 @@
     --footer-bg-color: #f4f4f4;
     --footer-border-color: #ccc;
     /* Add more if needed, like for dark mode */
+}
+
+/* Font-face declarations */
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Italic.ttf') format('truetype');
 }
 
 body {
