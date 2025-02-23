@@ -1,69 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Schopenhauer Says No</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="other-sites.html">Other Sites of Interest</a></li>
-                    <li><a href="new-essays.html">New Essays</a></li>
-                    <li><a href="impressum.html">Impressum</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="about">
-                <h2>About</h2>
-                <p><span class="dropcap">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. <span class="popin">Some annotation</span></p>
-            </section>
-            <section id="new-essays">
-                <h2>New Essays</h2>
-                <p><span class="dropcap">N</span>unc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. <span class="popin">Some annotation</span></p>
-            </section>
-            <section id="impressum">
-                <h2>Impressum</h2>
-                <p><strong>Name and Address:</strong><br>
-                Matthias Schulte-Althoff<br>
-                Weserstr. 46<br>
-                12045 Berlin<br>
-                Germany</p>
-                <p><strong>Disclaimer:</strong><br>
-                The content on this website is for informational purposes only. While every effort is made to ensure the accuracy of the information, the owner of this website assumes no responsibility for errors or omissions. The website does not collect or store any personal data from visitors.</p>
-                <p>For any inquiries, please contact: <a href="mailto:matthias@schulte-althoff.de">matthias@schulte-althoff.de</a></p>
-            </section>
-        </main>
-        <footer>
-            <img src="assets/Wolfram - Code 912 - Supernova Black.png" alt="Site Logo" />
-            <p>&copy; 2025 Schopenhauer Says No. All rights reserved.</p>
-        </footer>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const switchButton = document.createElement('button');
-            switchButton.className = 'switch';
-            switchButton.textContent = 'Switch to Light Mode';
-            document.body.appendChild(switchButton);
-    
-            function toggleMode() {
-                document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) {
-                    switchButton.textContent = 'Switch to Light Mode';
-                } else {
-                    switchButton.textContent = 'Switch to Dark Mode';
-                }
-            }
-    
-            switchButton.addEventListener('click', toggleMode);
-    
-            // Set dark mode as default
-            document.body.classList.add('dark-mode');
-        });
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Schopenhauer Says No</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id="header"></div>
+            <main>
+                <section id="about">
+                    <h2>About</h2>
+                    <p><span class="dropcap">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. <span class="popin">Some annotation</span></p>
+                </section>
+                <section id="new-essays">
+                    <h2>New Essays</h2>
+                    <p><span class="dropcap">N</span>unc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. <span class="popin">Some annotation</span></p>
+                </section>
+                <section id="impressum">
+                    <h2>Impressum</h2>
+                    <p><strong>Name and Address:</strong><br>
+                        Matthias Schulte-Althoff<br>
+                        Weserstr. 46<br>
+                        12045 Berlin<br>
+                        Germany</p>
+                    <p><strong>Disclaimer:</strong><br>
+                        The content on this website is for informational purposes only. While every effort is made to ensure the accuracy of the information, the owner of this website assumes no responsibility for errors or omissions. The website does not collect or store any personal data from visitors.</p>
+                    <p>For any inquiries, please contact: <a href="mailto:matthias@schulte-althoff.de">matthias@schulte-althoff.de</a></p>
+                </section>
+            </main>
+            <div id="footer"></div>
+        </div>
+        <script src="include.js"></script>
+        <script src="load-content.js"></script>
+    </body>
 </html>
