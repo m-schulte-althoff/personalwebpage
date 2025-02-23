@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SchoPONGhauer - Schopenhauer Says No</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        canvas { 
+            display: block; 
+            margin: 20px auto; 
+            background: #000; 
+        }
+        #score {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        #controls {
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        #attribution {
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        #attribution a {
+            color: #0095DD;
+            text-decoration: underline;
+        }
+        main {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="header"></div>
+        <main>
+            <div id="score">0 : 0</div>
+            <canvas id="pongCanvas" width="600" height="400"></canvas>
+            <div id="controls">Controls: Left Paddle - W (Up), S (Down) | Right Paddle - Up Arrow (Up), Down Arrow (Down)</div>
+            <div id="attribution">Image: <a href="https://en.wikipedia.org/wiki/Arthur_Schopenhauer#/media/File:Arthur_Schopenhauer_by_J_Sch%C3%A4fer,_1859b.jpg" target="_blank">Public domain photography of Arthur Schopenhauer by J. Schäfer, 1859</a></div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script>
+        // Get the canvas element and its context
+        var canvas = document.getElementById('pongCanvas');
+        var context = canvas.getContext('2d');
+
+        // Load Schopenhauer image
+        var schoImage = new Image();
+        schoImage.src = 'assets/SchoPONGhauer.png';
+        var ballSize = 30; // Size for the Schopenhauer image
+
+        // Paddle and ball dimensions
+        var paddleHeight = 75;
+        var paddleWidth = 10;
+
+        // Ball position and velocity
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+        var dx = 2;
+        var dy = 2;
+
+        // Paddle positions
+        var paddleY = (canvas.height - paddleHeight) / 2;
+        var paddleY2 = (canvas.height - paddleHeight) / 2;
+
+        // Control flags for paddle movement
+        var wPressed = false;
+        var sPressed = false;
+        var upPressed = false;
+        var downPressed = false;
+
+        // Scores for left and right players
+        var leftScore = 0;
+        var rightScore = 0;
+
+        // Draw the Schopenhauer image instead of the ball
+        function drawBall() {
+            context.drawImage(schoImage, x - ballSize/2, y - ballSize/2, ballSize, ballSize);
+        }
+
+        // Draw a paddle on the canvas at the specified position
+        function drawPaddle(x, y) {
+            context.beginPath();
+            context.rect(x, y, paddleWidth, paddleHeight);
+            context.fillStyle = "#0095DD";
+            context.fill();
+            context.closePath();
+        }
+
+        // Main draw function to update the game state
+        function draw() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawPaddle(canvas.width - paddleWidth, paddleY);
+            drawPaddle(0, paddleY2);
+
+            // Ball collision with paddles
+            if (x + dx > canvas.width - ballSize/2 - paddleWidth && y > paddleY && y < paddleY + paddleHeight) {
+                dx = -dx;
+            } else if (x + dx < ballSize/2 + paddleWidth && y > paddleY2 && y < paddleY2 + paddleHeight) {
+                dx = -dx;
+            } else if (x + dx > canvas.width - ballSize/2) {
+                leftScore++;
+                document.getElementById('score').textContent = leftScore + ' : ' + rightScore;
+                resetBall();
+                return;
+            } else if (x + dx < ballSize/2) {
+                rightScore++;
+                document.getElementById('score').textContent = leftScore + ' : ' + rightScore;
+                resetBall();
+                return;
+            }
+
+            // Ball collision with top and bottom walls
+            if (y + dy > canvas.height - ballSize/2 || y + dy < ballSize/2) {
+                dy = -dy;
+            }
+
+            // Paddle movement
+            if (wPressed && paddleY2 > 0) {
+                paddleY2 -= 7;
+            } else if (sPressed && paddleY2 < canvas.height - paddleHeight) {
+                paddleY2 += 7;
+            }
+
+            if (upPressed && paddleY > 0) {
+                paddleY -= 7;
+            } else if (downPressed && paddleY < canvas.height - paddleHeight) {
+                paddleY += 7;
+            }
+
+            // Update ball position
+            x += dx;
+            y += dy;
+
+            // Continue the game loop
+            requestAnimationFrame(draw);
+        }
+
+        // Reset the ball to the center and set a random direction
+        function resetBall() {
+            // Immediately move ball to center
+            x = canvas.width / 2;
+            y = canvas.height / 2;
+            dx = 0;
+            dy = 0;
+            
+            // Draw the ball in its new position
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawPaddle(canvas.width - paddleWidth, paddleY);
+            drawPaddle(0, paddleY2);
+
+            // Wait 3 seconds before starting
+            setTimeout(() => {
+                dx = (Math.random() > 0.5 ? 1 : -1) * 2;
+                dy = (Math.random() > 0.5 ? 1 : -1) * 2;
+                requestAnimationFrame(draw);
+            }, 3000);
+        }
+
+        // Event listeners for keydown and keyup events to control paddles
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp') {
+                upPressed = true;
+            } else if (event.key === 'ArrowDown') {
+                downPressed = true;
+            } else if (event.key === 'w' || event.key === 'W') {
+                wPressed = true;
+            } else if (event.key === 's' || event.key === 'S') {
+                sPressed = true;
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            if (event.key === 'ArrowUp') {
+                upPressed = false;
+            } else if (event.key === 'ArrowDown') {
+                downPressed = false;
+            } else if (event.key === 'w' || event.key === 'W') {
+                wPressed = false;
+            } else if (event.key === 's' || event.key === 'S') {
+                sPressed = false;
+            }
+        });
+
+        // Start the game loop once the image is loaded
+        schoImage.onload = function() {
+            requestAnimationFrame(draw);
+        };
+    </script>
+    <script src="include.js"></script>
+    <script src="load-content.js"></script>
+</body>
+</html>
