@@ -105,6 +105,15 @@ header nav ul li a {
     padding: 0.2em;
     border: 1px solid var(--text-color);
     border-radius: 0.2em;
+    display: inline-block;
+    margin-top: 0.075em;
+    margin-bottom: 0.075em;
+    line-height: 1.15;
+}
+
+/* Add additional spacing to paragraphs containing popin elements */
+p:has(.popin) {
+    line-height: 1.15;
 }
 
 footer {
