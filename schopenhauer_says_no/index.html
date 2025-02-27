@@ -35,6 +35,17 @@
                     Schopenhauer will be involved, of course.</p>
                 </p>
             </section>
+            <section id="letterboxd-activity">
+                <h2>Latest Activity on Letterboxd</h2>
+                <div id="letterboxd-embed-wrapper-tc">Loading...</div>
+                <script>
+                fetch('https://lb-embed-content.bokonon.dev?username=schpnhaurfails')
+                .then(response => response.text())
+                .then(data => {
+                document.getElementById('letterboxd-embed-wrapper-tc').innerHTML = data;
+                });
+                </script>
+            </section>
         </main>
         <div id="footer"></div>
     </div>
