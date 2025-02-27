@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     padding: 10px 5px 10px 5px;
     background-color: transparent;
     color: var(--text-color);
-    width: 100%;
-    max-width: 800px;
+    width: 100%; /* Ensure it takes full width */
     margin: 0 auto;
   }
   .gr_custom_header_1740633727 {
@@ -75,10 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     `;
 
-    // Add the script tag for the Goodreads widget
+    // Add the script tag for the Goodreads widget with width=full parameter
     const script = document.createElement('script');
     script.src = "https://www.goodreads.com/review/custom_widget/168711438.M.'s%20bookshelf:%20read?cover_position=left&cover_size=medium&num_books=5&order=d&shelf=read&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=true&widget_border_width=2&widget_id=1740633727&widget_text_color=000000&widget_title_size=medium&widget_width=full";
     script.type = "text/javascript";
+    script.charset = "utf-8";
     document.body.appendChild(script);
   }
 });
