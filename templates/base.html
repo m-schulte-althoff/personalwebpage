@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Schopenhauer Says No{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'other_sites' %}">Other Sites of Interest</a></li>
+                    <li><a href="{% url 'new_essays' %}">New Essays</a></li>
+                    <li><a href="{% url 'impressum' %}">Contact</a></li>
+                    <li><a href="{% url 'pong' %}">SchoPONGhauer</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <button id="switch-mode" class="switch">Switch to Light Mode</button>
+            <div class="footer-content">
+                <img src="{% static 'assets/Wolfram - Code 912 - Supernova Black.png' %}" alt="Site Logo">
+                <p>&copy; 2025 Schopenhauer Says No. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{% static 'js/load-content.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

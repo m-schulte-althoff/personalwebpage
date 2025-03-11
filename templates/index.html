@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Schopenhauer Says No{% endblock %}
+
+{% block content %}
+    <section id="about">
+        <h2>About</h2>
+        <p><span class="dropcap">H</span>omepage of Matthias Schulte-Althoff, a research associate at Charité
+            Universitätsmedizin Berlin and Freie Universität Berlin. <span class="popin"><a
+                    href="https://www.researchgate.net/profile/Matthias-Schulte-Althoff" target="_blank">some of
+                    my research</a></span><br>
+                    <br>
+                    Some of my interests include:
+        <ul>
+            <li>Tech and AI/analytics</li>
+            <li>Thoughts on philosophy, culture, and the social sciences/economics
+            <li>Music, film, and literature <span class="popin"><a href="https://letterboxd.com/schpnhaurfails/"
+                        target="_blank">letterboxd</a>, <a
+                        href="https://www.goodreads.com/user/show/168711438-m-schulte-althoff"
+                        target="_blank">goodreads</a> profiles</span></li>
+        </ul>
+        </p>
+    </section>
+    <section id="new-essays">
+        <h2>New Essays</h2>
+        <p><span class="dropcap">Y</span>et to come.. <span class="popin"><i>Quousque tandem?</i> Soon!</span>
+            <br>
+            Schopenhauer will be involved, of course.</p>
+        </p>
+    </section>
+    <section id="letterboxd-activity">
+        <h2>Latest Activity on Letterboxd</h2>
+        <div id="letterboxd-embed-wrapper-tc">Loading...</div>
+    </section>
+    <section id="goodreads-activity">
+        <h2>Latest Activity on Goodreads</h2>
+        <div id="goodreads-embed-wrapper"></div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('https://lb-embed-content.bokonon.dev?username=schpnhaurfails')
+        .then(response => response.text())
+        .then(data => {
+        document.getElementById('letterboxd-embed-wrapper-tc').innerHTML = data;
+        });
+    });
+</script>
+<script src="{% static 'js/goodreads-widget.js' %}"></script>
+{% endblock %}
