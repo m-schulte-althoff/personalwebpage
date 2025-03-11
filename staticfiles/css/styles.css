@@ -1,0 +1,157 @@
+/* Base Styles */
+
+:root {
+    --text-color: #333;
+    --bg-color: #fff;
+    --footer-bg-color: #f4f4f4;
+    --footer-border-color: #ccc;
+    --switch-bg-color: #333;
+    --switch-text-color: #fff;
+    --link-color: #1e90ff; /* Default link color */
+    --link-visited-color: #551a8b; /* Default visited link color */
+}
+
+body.dark-mode {
+    --text-color: #d7d7d7;
+    --bg-color: #313131;
+    --footer-bg-color: #434343;
+    --footer-border-color: #525252;
+    --switch-bg-color: #d7d7d7;
+    --switch-text-color: #333;
+    --link-color: #87cefa; /* Brighter link color for dark mode */
+    --link-visited-color: #dda0dd; /* Brighter visited link color for dark mode */
+}
+
+/* Font-face declarations */
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/old-standard-tt/OldStandardTT-Italic.ttf') format('truetype');
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--link-visited-color);
+}
+
+.container {
+    max-width: 1263px;
+    margin: 0 auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--text-color);
+    padding: 1em 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: var(--link-color);
+}
+
+/* Dropcap style */
+.dropcap {
+    font-family: 'Old Standard TT', serif; /* Placeholder for decorative font */
+    font-size: 3rem;
+    float: left;
+    margin-right: 0.1em;
+    line-height: 1;
+}
+
+/* Popin style */
+.popin {
+    font-style: italic;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 0.2em;
+    border: 1px solid var(--text-color);
+    border-radius: 0.2em;
+    display: inline-block;
+    margin-top: 0.075em;
+    margin-bottom: 0.075em;
+    line-height: 1.15;
+}
+
+/* Add additional spacing to paragraphs containing popin elements */
+p:has(.popin) {
+    line-height: 1.15;
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+    border-top: 1px solid var(--footer-border-color);
+    padding: 1em 0;
+    text-align: center;
+    position: relative;  /* For positioning context */
+    display: flex;      /* Use flexbox for layout */
+    justify-content: space-between;  /* Space items evenly */
+    align-items: center;  /* Center items vertically */
+    padding: 1em 20px;    /* Add horizontal padding */
+}
+
+footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;  /* Center the logo and copyright */
+}
+
+footer img {
+    max-width: 100px;
+    margin-bottom: 1em;
+}
+
+footer p {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-color);
+}
+
+.switch {
+    background-color: var(--switch-bg-color);
+    color: var(--switch-text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    order: -1;
+}
