@@ -1,0 +1,1 @@
+web: gunicorn schopenhauer_project.wsgi:application --log-file -
