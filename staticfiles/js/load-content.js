@@ -1,22 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function loadHTML(elementId, url) {
-        return fetch(url)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            });
-    }
-
-    // Load both header and footer, then initialize dark mode
-    Promise.all([
-        loadHTML('header', 'header.html'),
-        loadHTML('footer', 'footer.html')
-    ]).then(() => {
-        initializeDarkMode();
-    });
+    initializeDarkMode();
 });
 
-// Separate the dark mode logic into its own function
+// Dark mode logic
 function initializeDarkMode() {
     const switchButton = document.getElementById('switch-mode');
     

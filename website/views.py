@@ -7,7 +7,7 @@ def other_sites(request):
     return render(request, 'other-sites.html')
 
 def new_essays(request):
-    return render(request, 'new-essays.html')
+    return render(request, 'new_essays.html')
 
 def impressum(request):
     return render(request, 'impressum.html')
