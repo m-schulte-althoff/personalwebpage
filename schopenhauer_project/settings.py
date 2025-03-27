@@ -84,6 +84,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PW', ''),
         'HOST': 'localhost',
         'PORT': '',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES,STRICT_ALL_TABLES'",
+        }
     }
 }
 
