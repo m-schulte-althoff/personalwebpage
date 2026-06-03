@@ -1,9 +1,40 @@
+const scriptUrl = document.currentScript
+    ? new URL(document.currentScript.src, document.baseURI)
+    : new URL('load-content.js', document.baseURI);
+
 document.addEventListener('DOMContentLoaded', function() {
+    const includeBaseUrl = new URL('.', scriptUrl);
+
+    function isRelativeUrl(value) {
+        return value && !/^(?:[a-z][a-z0-9+.-]*:|#|\/)/i.test(value);
+    }
+
+    function resolveIncludedPaths(container, includeUrl) {
+        container.querySelectorAll('[href]').forEach(element => {
+            const href = element.getAttribute('href');
+            if (isRelativeUrl(href)) {
+                element.setAttribute('href', new URL(href, includeUrl).href);
+            }
+        });
+
+        container.querySelectorAll('[src]').forEach(element => {
+            const src = element.getAttribute('src');
+            if (isRelativeUrl(src)) {
+                element.setAttribute('src', new URL(src, includeUrl).href);
+            }
+        });
+    }
+
     function loadHTML(elementId, url) {
-        return fetch(url)
+        const includeUrl = new URL(url, includeBaseUrl);
+
+        return fetch(includeUrl)
             .then(response => response.text())
             .then(data => {
-                document.getElementById(elementId).innerHTML = data;
+                const template = document.createElement('template');
+                template.innerHTML = data;
+                resolveIncludedPaths(template.content, includeUrl);
+                document.getElementById(elementId).innerHTML = template.innerHTML;
             });
     }
 
